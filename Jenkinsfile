@@ -6,11 +6,8 @@ pipeline {
    stages {
        stage("Stage1") {
                 steps {
-                    echo "Building" 
-                    sh 'mvn -X clean install -DskipTests'
-                    echo "Testing"
-                    sh 'mvn test'
-
+                
+                    junit '**/target/surefire-reports/*.xml' 
 
 
                     echo "Creating artifact"
