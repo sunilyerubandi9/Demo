@@ -8,7 +8,7 @@ pipeline {
                 steps {
                      echo "Testing"
                     sh 'mvn test'
-                    junit '**/target/surefire-reports/*.xml' 
+                  
 
 
                     echo "Creating artifact"
