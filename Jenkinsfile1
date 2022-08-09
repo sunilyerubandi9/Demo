@@ -60,9 +60,11 @@ pipeline {
   
       stage("Deploy") {
              steps{ 
- 
+
                echo "i am in the Scratch/Test1 branch" 
                snDevOpsChange()
+
+
                   echo ">> Deploy in prod"
               }
       }      
