@@ -37,7 +37,7 @@ pipeline {
                  steps {
                     
                     echo 'Sonar..'
-		   // sonarSummaries()
+		    sonarSummaries()
                     
               }
       }
