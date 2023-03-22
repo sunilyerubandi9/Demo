@@ -62,7 +62,7 @@ def sonarSummaries() {
 
    withSonarQubeEnv('SonarCloud') {
        //sh '${SCANNER_HOME}/bin/sonar-scanner -Dproject.settings=${SCANNER_HOME}/conf/qa-sonar-scanner-cloud.properties'
-       sh '${SCANNER_HOME}/bin/sonar-scanner -Dsonar.projectKey=sunilyerubandi_DemoMavenProject -Dsonar.organization=sunilyerubandi -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=8f73ecadbe478e324214c741569315dddfa01ee5 -Dsonar.java.binaries=target/ -Dsonar.branch.name=master'
+       sh '${SCANNER_HOME}/bin/sonar-scanner -Dsonar.projectKey=sunilyerubandi_DemoMavenProject -Dsonar.organization=sunilyerubandi -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=c4493a58c7f85d402cb1d80f567f7b5bd14bc1b4 -Dsonar.java.binaries=target/ -Dsonar.branch.name=master'
    
 	}
 	
