@@ -19,6 +19,7 @@ pipeline {
            steps {
               
               sh 'mvn -B -DskipTests clean compile'
+	      snDevOpsChange(ignoreErrors:false
 
            }
        }
