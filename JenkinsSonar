@@ -41,6 +41,7 @@ pipeline {
                     snDevOpsArtifact(artifactsPayload: """{"artifacts": [{"name": "${artifactname}", "version": "1.${env.BUILD_NUMBER}","semanticVersion": "1.${env.BUILD_NUMBER}.0","repositoryName": "${repoName}"}],"branchName":"master"}""")
            	    snDevOpsPackage(name: "${pkgName}-${env.BUILD_NUMBER}", artifactsPayload: """{"artifacts":[{"name": "${artifactname}", "version": "1.${env.BUILD_NUMBER}", "repositoryName": "${repoName}"}], "branchName":"master"}""")
 		    snDevOpsChange(ignoreErrors:false)
+		    snDevOpsSecurityResult(attributes: "{'applicationName': 'App-DevOps-Azure-POC', 'buildVersion': 'jenkins-veracode_test-12'}",securityToolId: "024f19cfc30ee51021077405e40131df")
                     
                  }
       }
@@ -50,16 +51,16 @@ pipeline {
  
 }
 
-def sonarSummaries() {
+//def sonarSummaries() {
 
    //withSonarQubeEnv('Sonar_Cloud') {       
    //sh '${SCANNER_HOME}/bin/sonar-scanner -Dproject.settings=${SCANNER_HOME}/conf/qa-sonar-scanner-cloud.properties'     
    //}     withSonarQubeEnv('sonarQube_local'){
-   if(fileExists("sonar-project.properties")) {     
-             sh '${SCANNER_HOME}/bin/sonar-scanner'        } 
-	     else {         
-             sh '${SCANNER_HOME}/bin/sonar-scanner -Dproject.settings=${SCANNER_HOME}/conf/qa-sonar-scanner.properties'   
+  // if(fileExists("sonar-project.properties")) {     
+           //  sh '${SCANNER_HOME}/bin/sonar-scanner'        } 
+	  //   else {         
+          //   sh '${SCANNER_HOME}/bin/sonar-scanner -Dproject.settings=${SCANNER_HOME}/conf/qa-sonar-scanner.properties'   
 	     
    //sh '${SCANNER_HOME}/bin/sonar-scanner -Dproject.settings=${SCANNER_HOME}/conf/sonar-scanner.properties'        
-    }     
-   }
+  //  }     
+  // }
