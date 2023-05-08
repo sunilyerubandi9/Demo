@@ -38,9 +38,9 @@ pipeline {
                     
                     echo 'Deploying the change....'
 		   // sonarSummaries()
-                    snDevOpsArtifact(artifactsPayload: """{"artifacts": [{"name": "${artifactname}", "version": "1.${env.BUILD_NUMBER}","semanticVersion": "1.${env.BUILD_NUMBER}.0","repositoryName": "${repoName}"}],"branchName":"master"}""")
-           	    snDevOpsPackage(name: "${pkgName}-${env.BUILD_NUMBER}", artifactsPayload: """{"artifacts":[{"name": "${artifactname}", "version": "1.${env.BUILD_NUMBER}", "repositoryName": "${repoName}"}], "branchName":"master"}""")
-		    snDevOpsChange(ignoreErrors:false)
+                   // snDevOpsArtifact(artifactsPayload: """{"artifacts": [{"name": "${artifactname}", "version": "1.${env.BUILD_NUMBER}","semanticVersion": "1.${env.BUILD_NUMBER}.0","repositoryName": "${repoName}"}],"branchName":"master"}""")
+           	   // snDevOpsPackage(name: "${pkgName}-${env.BUILD_NUMBER}", artifactsPayload: """{"artifacts":[{"name": "${artifactname}", "version": "1.${env.BUILD_NUMBER}", "repositoryName": "${repoName}"}], "branchName":"master"}""")
+		   // snDevOpsChange(ignoreErrors:false)
 		    snDevOpsSecurityResult securityResultAttributes: "{'applicationName': 'App-DevOps-Azure-POC', 'buildVersion': 'jenkins-veracode_test-12'}", securityToolId: "8075de6f87e569100aaeea483cbb35c7" // toolId: "8075de6f87e569100aaeea483cbb35c7"
 		   
                  }
