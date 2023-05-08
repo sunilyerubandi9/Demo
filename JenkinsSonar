@@ -47,7 +47,7 @@ pipeline {
       }
       stage('Security Scan Result') {
             steps {
-                snDevOpsSecurityResult securityResultAttributes: "{'applicationName': 'App-DevOps-Azure-POC', 'buildVersion': 'jenkins-veracode_test-12'}", securityToolId: "8075de6f87e569100aaeea483cbb35c7" // toolId: "8075de6f87e569100aaeea483cbb35c7"
+                snDevOpsSecurityResult securityResultAttributes: "{'applicationName': 'App-DevOps-Azure-POC', 'buildVersion': 'jenkins-veracode_test-12'}", securityToolId: "8075de6f87e569100aaeea483cbb35c7" 
             }
         }
 
