@@ -41,7 +41,7 @@ pipeline {
                     snDevOpsArtifact(artifactsPayload: """{"artifacts": [{"name": "${artifactname}", "version": "1.${env.BUILD_NUMBER}","semanticVersion": "1.${env.BUILD_NUMBER}.0","repositoryName": "${repoName}"}],"branchName":"master"}""")
            	    snDevOpsPackage(name: "${pkgName}-${env.BUILD_NUMBER}", artifactsPayload: """{"artifacts":[{"name": "${artifactname}", "version": "1.${env.BUILD_NUMBER}", "repositoryName": "${repoName}"}], "branchName":"master"}""")
 		    snDevOpsChange(ignoreErrors:false)
-		    snDevOpsSecurityResult(ignoreErrors:false)
+		    snDevOpsSecurityResult({securityToolId":"","securityResultAttributes":{"applicationName":"App-DevOps-Azure-POC","buildVersion":"jenkins-veracode_test-12"},"pipelineInfo":{"buildNumber":"1","stageName":"Security Scan Result","jobName":"Veracode with Step"}})
                     
                  }
       }
