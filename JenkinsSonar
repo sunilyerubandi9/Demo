@@ -5,6 +5,7 @@ def semanticVersion = "${env.BUILD_NUMBER}.0.0"
 def packageName = "devops-snow-build-pkg_${env.BUILD_NUMBER}"
 def version = "${env.BUILD_NUMBER}.0"
 def pkgName = "devops-snow-build-pkg_${env.BUILD_NUMBER}"
+def changeRequestId = "testId"
 
 pipeline {
   agent any
@@ -24,7 +25,7 @@ pipeline {
        }
        stage('Test') {
            steps {
-              
+              snDevOpsStep()
               sh 'mvn test'
            }
            post {
@@ -38,10 +39,11 @@ pipeline {
 		 
                    echo 'Deploying the change....'
 		   // sonarSummaries()
-		   snDevOpsSecurityResult securityResultAttributes: "{'applicationName': 'App-DevOps-Azure-POC', 'buildVersion': 'jenkins-veracode_test-12'}", securityToolId: "8075de6f87e569100aaeea483cbb35c7" // toolId: "8075de6f87e569100aaeea483cbb35c7"
+		   //snDevOpsSecurityResult securityResultAttributes: "{'applicationName': 'App-DevOps-Azure-POC', 'buildVersion': 'jenkins-veracode_test-12'}", securityToolId: "8075de6f87e569100aaeea483cbb35c7" // toolId: "8075de6f87e569100aaeea483cbb35c7"
                    snDevOpsArtifact(artifactsPayload: """{"artifacts": [{"name": "${artifactname}", "version": "1.${env.BUILD_NUMBER}","semanticVersion": "1.${env.BUILD_NUMBER}.0","repositoryName": "${repoName}"}],"branchName":"master"}""")
            	   snDevOpsPackage(name: "${pkgName}-${env.BUILD_NUMBER}", artifactsPayload: """{"artifacts":[{"name": "${artifactname}", "version": "1.${env.BUILD_NUMBER}", "repositoryName": "${repoName}"}], "branchName":"master"}""")
-		 //  snDevOpsChange(ignoreErrors:false)
+		  // snDevOpsChange(ignoreErrors:false)
+		   snDevOpsChange changeRequestDetails: '{ "attributes": { "short_description": "pkgName => ${pkgName}", "description": "changeRequestId => ${changeRequestId}"}}'
 		    
 		   
                  }
