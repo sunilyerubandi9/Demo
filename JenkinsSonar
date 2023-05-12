@@ -44,7 +44,8 @@ pipeline {
                    snDevOpsArtifact(artifactsPayload: """{"artifacts": [{"name": "${artifactname}", "version": "1.${env.BUILD_NUMBER}","semanticVersion": "1.${env.BUILD_NUMBER}.0","repositoryName": "${repoName}"}],"branchName":"master"}""")
            	   snDevOpsPackage(name: "${pkgName}-${env.BUILD_NUMBER}", artifactsPayload: """{"artifacts":[{"name": "${artifactname}", "version": "1.${env.BUILD_NUMBER}", "repositoryName": "${repoName}"}], "branchName":"master"}""")
 		  // snDevOpsChange(ignoreErrors:false)
-		   snDevOpsChange changeRequestDetails: '{ "attributes": { "chg_model": "e55d0bfec343101035ae3f52c1d3ae49", "standard_change_template": "508e02ec47410200e90d87e8dee49058"}}'//standard
+		//   snDevOpsChange changeRequestDetails: '{ "attributes": { "chg_model": "007c4001c343101035ae3f52c1d3aeb2", "standard_change_template": "508e02ec47410200e90d87e8dee49058"}}'//standard
+		   snDevOpsChange changeRequestDetails: '{ "attributes": { "chg_model": "007c4001c343101035ae3f52c1d3aeb2"}}'	
 		    
 		   
                  }
