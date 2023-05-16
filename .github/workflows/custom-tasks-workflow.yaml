@@ -63,8 +63,7 @@ jobs:
 
             - name: What's in the target directory
               run: |
-                    cd target
-                    ls -a
+                    
 
            
 
