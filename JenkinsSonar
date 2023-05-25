@@ -6,7 +6,7 @@ def packageName = "devops-snow-build-pkg_${env.BUILD_NUMBER}"
 def version = "${env.BUILD_NUMBER}.0"
 def pkgName = "devops-snow-build-pkg_${env.BUILD_NUMBER}"
 def changeRequestId = "testId"
-def changeModel = "Emergency"
+
 
 pipeline {
   agent any
@@ -39,13 +39,13 @@ pipeline {
                  steps {
 		 
                    echo 'Deploying the change....'
-		   // sonarSummaries()
+		   sonarSummaries()
 		   snDevOpsSecurityResult securityResultAttributes: "{'applicationName': 'RiyaJenkins', 'buildVersion': ''}", securityToolId: "8fed51e8c347a550946e706dc0013164" // toolId: "8075de6f87e569100aaeea483cbb35c7"
                    snDevOpsArtifact(artifactsPayload: """{"artifacts": [{"name": "${artifactname}", "version": "1.${env.BUILD_NUMBER}","semanticVersion": "1.${env.BUILD_NUMBER}.0","repositoryName": "${repoName}"}],"branchName":"master"}""")
            	   snDevOpsPackage(name: "${pkgName}-${env.BUILD_NUMBER}", artifactsPayload: """{"artifacts":[{"name": "${artifactname}", "version": "1.${env.BUILD_NUMBER}", "repositoryName": "${repoName}"}], "branchName":"master"}""")
 		  // snDevOpsChange(ignoreErrors:false)
 		  // snDevOpsChange changeRequestDetails: '{ "attributes": { "short_description": "Testing","category": "DevOps", "chg_model": "e55d0bfec343101035ae3f52c1d3ae49", "type": "standard", "standard_change_template": "508e02ec47410200e90d87e8dee49058"}}'//standard
-		   //  snDevOpsChange changeRequestDetails: '{ "attributes": { "chg_model": "adffaa9e4370211072b7f6be5bb8f2ed", "type": "standard", "standard_change_template": "508e02ec47410200e90d87e8dee49058"}}'	
+		     snDevOpsChange changeRequestDetails: '{ "attributes": { "chg_model": "adffaa9e4370211072b7f6be5bb8f2ed", "type": "standard", "standard_change_template": "508e02ec47410200e90d87e8dee49058"}}'	
 		 //  snDevOpsChange changeRequestDetails: '{ "attributes": { "type": "standard", "standard_change_template": "508e02ec47410200e90d87e8dee49058"}}'
 		    // snDevOpsChange()
 		    
@@ -58,7 +58,7 @@ pipeline {
  
 }
 
-//def sonarSummaries() {
+def sonarSummaries() {
 
    //withSonarQubeEnv('Sonar_Cloud') {       
    //sh '${SCANNER_HOME}/bin/sonar-scanner -Dproject.settings=${SCANNER_HOME}/conf/qa-sonar-scanner-cloud.properties'     
