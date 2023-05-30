@@ -7,7 +7,7 @@ def version = "${env.BUILD_NUMBER}.0"
 def pkgName = "devops-snow-build-pkg_${env.BUILD_NUMBER}"
 def changeRequestId = "testId"
 def artifactVersion = "2.${env.BUILD_NUMBER}"
-
+def artifactSemVersion = "${artifactVersion}.0"
 
 
 pipeline {
