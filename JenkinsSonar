@@ -26,7 +26,7 @@ pipeline {
        }
        stage('Test') {
            steps {
-	      sonarSummaries()
+	      //sonarSummaries()
               snDevOpsStep()
 	      sh 'mvn test'
            }
@@ -48,6 +48,12 @@ pipeline {
 		    // snDevOpsChange changeRequestDetails: '{ "attributes": { "chg_model": "adffaa9e4370211072b7f6be5bb8f2ed", "type": "standard", "standard_change_template": "508e02ec47410200e90d87e8dee49058"}}'	
 		 //  snDevOpsChange changeRequestDetails: '{ "attributes": { "type": "standard", "standard_change_template": "508e02ec47410200e90d87e8dee49058"}}'
 		     snDevOpsChange()
+		     script{
+                    changeNumber = snDevOpsGetChangeNumber()
+                    echo '>> Deploy Stage -----'
+                    sh "echo ${changeNumber}"
+                  
+                  }
 		    
 		   
                  }
