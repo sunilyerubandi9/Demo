@@ -59,6 +59,7 @@ pipeline {
 		    
 		   
                  }
+	}
 		 
        stage('pre prod deploy') { 
          steps {
