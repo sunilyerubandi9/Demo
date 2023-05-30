@@ -60,26 +60,21 @@ pipeline {
 		   
                  }
 		 
-          }
-     
-     }
-     
-     stage('pre prod deploy') { 
+       stage('pre prod deploy') { 
          steps {
                     //snDevOpsStep()     
                       echo "packageName - ${packageName}" 
                        snDevOpsPackage(name: "${packageName}", artifactsPayload:"""{"artifacts": [{"name": "${artifactName}","version":"${artifactVersion}","semanticVersion": "${artifactSemVersion}","repositoryName": "${repoName}"}]}""")
                     }
             }
- 
-}
-
- 
-
-	    
-	    
-
-def sonarSummaries() {
+		 
+      }
+	   
+     
+  }
+     
+     
+  def sonarSummaries() {
  //  withSonarQubeEnv('SonarCloud') {
     //   sh '${SCANNER_HOME}/bin/sonar-scanner -Dproject.settings=${SCANNER_HOME}/conf/qa-sonar-scanner-cloud.properties'
  //  }
