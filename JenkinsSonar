@@ -19,7 +19,7 @@ pipeline {
 	 SCANNER_HOME = tool 'sonarScanner'
 	}  
   stages {
-       stage('Build') {
+       stage('Build &1') {
            steps {
               
               sh 'mvn -B -DskipTests clean compile'
