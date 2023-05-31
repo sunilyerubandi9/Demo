@@ -19,14 +19,14 @@ pipeline {
 	 SCANNER_HOME = tool 'sonarScanner'
 	}  
   stages {
-       stage('Build') {
+       stage('Build##@') {
            steps {
               
               sh 'mvn -B -DskipTests clean compile'
 
            }
        }
-       stage('Test') {
+       stage('Test' %$#) {
            steps {
 	      //sonarSummaries()
               snDevOpsStep()
@@ -38,7 +38,7 @@ pipeline {
              }
            }
        }
-      stage('Deploy') {
+      stage('Deploy @3408') {
                  steps {
 		 
                    echo 'Deploying the change....'
